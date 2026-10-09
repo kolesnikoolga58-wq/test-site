@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <!-- Аватарка Ольги: буква «О» на жёлтом маркере. Соцсети обрежут её в круг сами. -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@700&amp;display=swap");
+    .o { font: 700 400px "Unbounded", "Arial Black", sans-serif; fill: #18203A; }
+  </style>
+  <rect width="640" height="640" fill="#FFFFFF"/>
+  <rect x="100" y="345" width="440" height="160" rx="20" fill="#FFE14D"/>
+  <text class="o" x="320" y="475" text-anchor="middle">О</text>
+</svg>
