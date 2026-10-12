@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Сайты-одностраничники для частных мастеров и малого бизнеса от 10 000 ₽. Ольга, Телеграм @olga_koles.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
 <title>Сайты Ольги</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -436,7 +437,7 @@ a:focus-visible, button:focus-visible {
         <p class="lead">Коротко и понятно расскажу о вашей услуге: что вы делаете, сколько стоит и как с вами связаться. Сайт удобно открывается с телефона.</p>
         <span class="price-tag">от 10 000 ₽ <span>за сайт под ключ</span></span>
         <div class="actions">
-          <a class="btn btn-main" href="https://t.me/olga_koles" target="_blank" rel="noopener">Написать в Телеграм</a>
+          <a class="btn btn-main" href="https://t.me/olga_koles" target="_blank" rel="noopener noreferrer">Написать в Телеграм</a>
           <a class="btn btn-line" href="tel:+79056565502">Позвонить</a>
         </div>
       </div>
@@ -543,7 +544,7 @@ a:focus-visible, button:focus-visible {
       <div class="about">
         <p>Я дизайнер инфографики для карточек товаров на Вайлдберриз и Озоне. Там у покупателя есть пара секунд, чтобы понять, что перед ним, и решить, листать дальше или купить.</p>
         <p>Тот же подход я использую в сайтах: главное на виду, лишнего нет, кнопка связи всегда рядом.</p>
-        <p><a href="https://t.me/ozon_wb_2026" target="_blank" rel="noopener">Мои работы в Телеграм-канале «Инфографика для маркетплейсов»</a></p>
+        <p><a href="https://t.me/ozon_wb_2026" target="_blank" rel="noopener noreferrer">Мои работы в Телеграм-канале «Инфографика для маркетплейсов»</a></p>
       </div>
     </section>
 
@@ -558,7 +559,7 @@ a:focus-visible, button:focus-visible {
             <span class="way-label">Телеграм</span>
             <span class="way-value">@olga_koles</span>
           </div>
-          <a class="btn btn-main" href="https://t.me/olga_koles" target="_blank" rel="noopener">Написать в Телеграм</a>
+          <a class="btn btn-main" href="https://t.me/olga_koles" target="_blank" rel="noopener noreferrer">Написать в Телеграм</a>
         </div>
         <div class="way">
           <div>
@@ -584,27 +585,6 @@ a:focus-visible, button:focus-visible {
   </div>
 </footer>
 
-<script>
-  document.getElementById('copy-phone').addEventListener('click', function () {
-    var phone = document.getElementById('phone');
-    var note = document.getElementById('copied');
-    var text = phone.textContent.trim();
-    function selectText() {
-      var range = document.createRange();
-      range.selectNodeContents(phone);
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-      note.textContent = 'Номер выделен, нажмите «Копировать»';
-    }
-    try {
-      navigator.clipboard.writeText(text).then(function () {
-        note.textContent = 'Номер скопирован';
-      }, selectText);
-    } catch (e) {
-      selectText();
-    }
-  });
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
