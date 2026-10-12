@@ -24,6 +24,7 @@
   --marker: #FFE14D;
   --marker-ink: #18203A;
   --marker-soft: #FFE14D;
+  --glow: rgba(36, 67, 214, 0.45);
   --band: #18203A;
   --band-ink: #C9CFE3;
   --band-strong: #FFFFFF;
@@ -49,6 +50,7 @@
     --marker: #FFE14D;
     --marker-ink: #18203A;
     --marker-soft: rgba(255, 225, 77, 0.5);
+    --glow: rgba(147, 164, 255, 0.45);
     --band: #0A0E1D;
     --band-ink: #A4ABC6;
     --mock: #283050;
@@ -68,6 +70,7 @@
   --marker: #FFE14D;
   --marker-ink: #18203A;
   --marker-soft: rgba(255, 225, 77, 0.5);
+  --glow: rgba(147, 164, 255, 0.45);
   --band: #0A0E1D;
   --band-ink: #A4ABC6;
   --mock: #283050;
@@ -96,7 +99,11 @@ h1, h2, h3 {
   text-wrap: balance;
   margin: 0;
 }
-h1 { font-size: clamp(28px, 3.6vw, 46px); }
+h1 {
+  font-size: clamp(26px, 3vw, 40px);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
 h2 { font-size: clamp(24px, 3.2vw, 36px); }
 h3 { font-size: 20px; font-weight: 500; }
 p { margin: 0; }
@@ -147,11 +154,42 @@ a:focus-visible, button:focus-visible {
   text-decoration: none;
   border: 2px solid var(--cobalt);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow 0.25s ease, transform 0.15s ease, background-color 0.2s ease;
 }
-.btn-main { background: var(--cobalt); color: var(--cobalt-ink); }
-.btn-main:hover { filter: brightness(1.08); }
+.btn:active { transform: scale(0.98); }
+/* Свечение */
+.btn-main {
+  background: var(--cobalt);
+  color: var(--cobalt-ink);
+  box-shadow: 0 0 18px -2px var(--glow);
+}
+.btn-main:hover { filter: brightness(1.08); box-shadow: 0 0 32px 2px var(--glow); }
 .btn-line { background: transparent; color: var(--cobalt); }
-.btn-line:hover { background: var(--mock); }
+.btn-line:hover { background: var(--mock); box-shadow: 0 0 22px -2px var(--glow); }
+/* Главная кнопка первого экрана мягко «дышит» */
+.hero .btn-main { animation: breathe 3s ease-in-out infinite; }
+.hero .btn-main:hover { animation: none; }
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 14px -4px var(--glow); }
+  50% { box-shadow: 0 0 30px 2px var(--glow); }
+}
+/* Волна от места нажатия */
+.ripple {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple 0.65s ease-out forwards;
+}
+@keyframes ripple {
+  to { transform: scale(1); opacity: 0; }
+}
 .btn-small { min-height: 42px; padding: 0 18px; font-size: 15px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -420,6 +458,9 @@ a:focus-visible, button:focus-visible {
 }
 @media (prefers-reduced-motion: reduce) {
   .note { animation: none; }
+  .hero .btn-main { animation: none; }
+  .ripple { display: none; }
+  .btn { transition: none; }
 }
 </style>
 </head>
