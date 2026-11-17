@@ -222,7 +222,7 @@ a:focus-visible, button:focus-visible {
 .hero-note { font-size: 15px; color: var(--muted); }
 
 /* Размеченный лист лендинга */
-.proof { display: grid; gap: 14px; }
+figure.proof { display: grid; gap: 14px; margin: 0; }
 .proof-grid {
   position: relative;
   display: grid;
@@ -274,11 +274,11 @@ a:focus-visible, button:focus-visible {
   border-radius: 50%;
   background: var(--cobalt);
 }
-.note:nth-of-type(1) { animation-delay: 0.2s; }
-.note:nth-of-type(2) { animation-delay: 0.45s; }
-.note:nth-of-type(3) { animation-delay: 0.7s; }
-.note:nth-of-type(4) { animation-delay: 0.95s; }
-.note:nth-of-type(5) { animation-delay: 1.2s; }
+.proof-grid > :nth-child(1 of .note) { animation-delay: 0.2s; }
+.proof-grid > :nth-child(2 of .note) { animation-delay: 0.45s; }
+.proof-grid > :nth-child(3 of .note) { animation-delay: 0.7s; }
+.proof-grid > :nth-child(4 of .note) { animation-delay: 0.95s; }
+.proof-grid > :nth-child(5 of .note) { animation-delay: 1.2s; }
 @keyframes note-in {
   from { opacity: 0; transform: translateX(-8px); }
 }
